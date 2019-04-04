@@ -19,17 +19,20 @@ PAGE CONTENT STUFF
 
 var createEntry = function(key, value) {
 	var newNote = '-  ' + value;
-	return localStorage.setItem(key, newNote);
+    return localStorage.setItem(key, newNote);
 }
 
 var updateEntry = function(key, value) {
-	return localStorage.setItem(key, value);
+	var newNote = '-  ' + value;
+	return localStorage.setItem(key, newNote);
 }
 
 
 var removeEntry = function(key) {
 	return localStorage.removeItem(key);
 }
+
+
 
 /*
 JQUERY STUFF
@@ -40,18 +43,22 @@ JQUERY STUFF
 $(document).ready(function () {
 	loadLocalStorage();
 
+	updateStatusLabel('There is nothing here!');
+
 	$('#btn-create').on('click', function(e) {
 		var key = $('#key').val();
 		var value = $('#value').val();
 		var keyExists = localStorage.getItem(key) !== null;
 
 		if (keyExists) {
-			updateStatusLabel('key already exists, please use update button instead! :D');
+			updateStatusLabel('Use a different title for a note!');
 		} else if (key === '') {
-			updateStatusLabel('invalid input!')
+			updateStatusLabel('You need a title!')
 		}else {
 			createEntry(key, value);
-			updateStatusLabel('key created - ' + key);
+			updateStatusLabel('Note created - ' + key + '!');
+			$('#key').val('');
+		    $('#value').val('');
 		}
 
 		loadLocalStorage();
@@ -64,14 +71,16 @@ $(document).ready(function () {
 		var keyExists = existingValue !== null;
 
 		if (value === existingValue) {
-			updateStatusLabel('key not updated - that value already exists silly! xD')
+			updateStatusLabel('You changed absolutely nothing!')
 		} else if (keyExists) {
 			updateEntry(key, value);
-			updateStatusLabel('key updated - ' + key);
+			updateStatusLabel('Note updated - ' + key + '!');
+			$('#key').val('');
+		    $('#value').val('');
 		} else if (key === '') {
-			updateStatusLabel('invalid input!')
+			updateStatusLabel('You need to input a title to change it!')
 		} else {
-			updateStatusLabel('key doesn\'t exist, please use create button instead! :D');
+			updateStatusLabel('Use create button for a new note!');
 		}		
 		
 		loadLocalStorage();		
@@ -84,14 +93,26 @@ $(document).ready(function () {
 
 		if (keyExists) {
 			removeEntry(key);
-			updateStatusLabel('key removed - ' + key);
+			updateStatusLabel('Note removed - ' + key + '!');
+			$('#key').val('');
+		    $('#value').val('');
 		} else if (key === '') {
-			updateStatusLabel('invalid input!')
+			updateStatusLabel('You didn\'t delete anything!')
 		} else {
-			updateStatusLabel('key doesn\'t exist, nothing removed. :|');
+			updateStatusLabel('Title doesn\'t exist, nothing removed. :|');
 		}
 
 		loadLocalStorage();
 	});	
+
+	$('#btn-clear').on('click', function(e) {
+		confirm('Are you sure you want to delete everything?')
+		localStorage.clear();
+		updateStatusLabel('There is nothing here!')
+		loadLocalStorage();
+	});	
+
+
+	
 
 });
