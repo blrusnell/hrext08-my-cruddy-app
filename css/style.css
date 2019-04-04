@@ -13,7 +13,7 @@ state changing styling
 	FLEXBOX CONTAINER
 	guide: https://css-tricks.com/snippets/css/a-guide-to-flexbox/
 */
-.container {
+.container1 {
 	display: flex;
 }
 
@@ -21,8 +21,12 @@ state changing styling
 	TABLE STYLING 
 */
 table {
-	width: 400px;
+	width: 1000px;
 	margin-left: 30px;
+}
+
+.title {
+	width: 20%;
 }
 
 table,
@@ -35,6 +39,7 @@ tfoot {
     background-color: #333;
     color: #fff;
 }
+
 
 /*
 	FORM STYLING 

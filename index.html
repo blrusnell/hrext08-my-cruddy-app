@@ -11,14 +11,14 @@
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
-	<div class="container">
+	<div class="container1">
 		<form action="" method="" class="form">
 			<div class="form">
-				<label for="key">Enter key: </label>
+				<label for="key">Title: </label>
 				<input type="text" name="key" id="key" required>
 			</div>
 			<div class="form">
-				<label for="value">Enter value: </label>
+				<label for="value">Note: </label>
 				<input type="text" name="value" id="value" required>
 			</div>
 			<div class="form">
@@ -28,22 +28,24 @@
 			</div>
 			<!-- clear button? -->
 		</form>	
+	</div>
+	<div id="statusLabel">Status:</div>
+	<div class="container2">
 		<table>
 			<thead>
 				<tr>
-					<th>Key</th>
-					<th>Value</th>
+					<th class="title">Title</th>
+					<th class="note">Note</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
-					<td>test key</td>
-					<td>test value</td>
+					<td class="title">test key</td>
+					<td class="note">test value</td>
 				</tr>
 			</tbody>
 		</table>
-	</div>
-	<div id="statusLabel">Status:</div>
+    </div>
 
 	<script src="app/app.js"></script>
   <!--
