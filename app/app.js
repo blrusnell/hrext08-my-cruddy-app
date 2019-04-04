@@ -18,12 +18,12 @@ PAGE CONTENT STUFF
 */
 
 var createEntry = function(key, value) {
-	var newNote = '-  ' + value;
+	var newNote = '•  ' + value;
     return localStorage.setItem(key, newNote);
 }
 
 var updateEntry = function(key, value) {
-	var newNote = '-  ' + value;
+	var newNote = '•  ' + value;
 	return localStorage.setItem(key, newNote);
 }
 
