@@ -23,45 +23,59 @@ state changing styling
 table {
 	width: 1000px;
 	margin-left: 30px;
+	border-collapse: collapse;
 }
 
 .title {
 	width: 20%;
 }
 
-table,
-td {
-    border: 1px solid #333;
+.note {
+
 }
 
-thead,
-tfoot {
-    background-color: #333;
-    color: #fff;
+
+tr:hover {
+	background-color:#f5f5f5;
 }
+
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+
+
 
 
 /*
 	FORM STYLING 
 	TODO: validation checking styling 
 */
-form.form {
+
+input {
+  margin-bottom: 10px;
+  width: 200px;
+  height: 40px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
 }
 
-div.form {
+textarea {
+  width: 500px;
+  height: 150px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  resize: none;
+  margin-bottom: 10px;
 }
 
-label, input {
-    margin-bottom: 10px;
-    width: 125px;
-}
-
-label {
-	display: inline-block;
-    padding-right: 10px;
-    width: 80px;
-
-}
 
 button.button {
 	margin-right: 20px;
