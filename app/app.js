@@ -45,9 +45,12 @@ $(document).ready(function () {
 
 	updateStatusLabel('There is nothing here!');
 
+
+
+
 	$('#btn-create').on('click', function(e) {
 		var key = $('#key').val();
-		var value = $('#value').val();
+		var value = $('#value').val(); 
 		var keyExists = localStorage.getItem(key) !== null;
 
 		if (keyExists) {

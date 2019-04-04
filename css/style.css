@@ -10,8 +10,8 @@ state changing styling
 */
 
 body {
-	background-color: 	#E0FFFF;
-
+	background-color: #F0F8FF;
+    width: 1500px;
 }
 
 /*
@@ -24,7 +24,7 @@ body {
 }
 
 .container2 {
-	margin-left: 240px;
+	margin-left: 135px;
 }
 
 
@@ -32,7 +32,7 @@ body {
 	TABLE STYLING 
 */
 table {
-	width: 500px;
+	width: 700px;
 	margin-left: 30px;
 	border-collapse: separate;
 	border-spacing: 10px;
@@ -55,7 +55,8 @@ tr:hover {
 }
 
 th, td {
-  padding: 8px;
+  word-break: break-all;
+  padding: 12px;
   text-align: left;
   border-bottom: 1px solid #ddd;
   margin-bottom: 3px;
@@ -97,6 +98,10 @@ textarea {
 	margin-bottom: 10px;
 }
 
+#pageTitle {
+	margin-top: 30px;
+}
+
 /*
 BUTTON STYLING
 */
@@ -115,11 +120,10 @@ button.button {
   background-color:	#4682B4;
   border: none;
   border-radius: 15px;
-  box-shadow: 0 3px #999;
+  
 }
 
 .button:active {
-  background-color:	#F5F5F5;
-  box-shadow: 0 5px #666;
+  background-color:	#4682B4;
   transform: translateY(4px);
 }
