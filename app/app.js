@@ -67,7 +67,7 @@ $(document).ready(function () {
 			updateStatusLabel('You need a name!')
 		}else {
 			createEntry(key, value);
-			updateStatusLabel('Person created - ' + key + '!');
+			updateStatusLabel('New friend created - ' + key + '!');
 			$('#key').val('');
 		    $('#value').val('');
 		}
@@ -85,7 +85,7 @@ $(document).ready(function () {
 			updateStatusLabel('You changed absolutely nothing!')
 		} else if (keyExists) {
 			updateEntry(key, value);
-			updateStatusLabel('Person updated - ' + key + '!');
+			updateStatusLabel('Friend updated - ' + key + '!');
 			$('#key').val('');
 		    $('#value').val('');
 		} else if (key === '') {
@@ -104,7 +104,7 @@ $(document).ready(function () {
 
 		if (keyExists) {
 			removeEntry(key);
-			updateStatusLabel('Person removed - ' + key + '!');
+			updateStatusLabel('You lost a friend ' + key + '!');
 			$('#key').val('');
 		    $('#value').val('');
 		} else if (key === '') {
