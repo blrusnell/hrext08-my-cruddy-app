@@ -39,27 +39,6 @@ var removeEntry = function(key) {
 	return localStorage.removeItem(key);
 }
 
-// function getConfirmation()
-// {
-//     var retVal = confirm("Do you want to continue ?");
-//     if (retVal == true)
-//     {
-//         alert("User wants to continue!");
-//         return true;
-//     } 
-//     else
-//     {
-//         alert("User does not want to continue!");
-//         return false;
-//     }
-// }
-
-
-
-
-
-
-
 
 /*
 JQUERY STUFF
@@ -70,7 +49,7 @@ JQUERY STUFF
 $(document).ready(function () {
 	loadLocalStorage();
 
-	updateStatusLabel('There is nothing here!');
+	updateStatusLabel('You currently have no friends...');
 
 
 
@@ -141,7 +120,7 @@ $(document).ready(function () {
 		if (confirm("Press Ok to Thanos your list!")) {
           localStorage.clear();
         }
-		updateStatusLabel('There is nothing here!')
+		updateStatusLabel('You currently have no friends...')
 		loadLocalStorage();
 	});	
 

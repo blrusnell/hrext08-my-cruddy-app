@@ -103,6 +103,7 @@ input {
 
 #statusLabel {
 	margin-bottom: 10px;
+	font-style: italic;
 }
 
 #pageTitle {
