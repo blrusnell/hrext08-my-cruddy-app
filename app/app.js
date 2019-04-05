@@ -1,8 +1,9 @@
 var loadLocalStorage = function () {
-	var keys = Object.keys(localStorage)
+	var keys = Object.keys(localStorage);
 	var htmlString = '';
 	for (var i = 0; i < keys.length; i++) {
-		htmlString += `<tr><td>${keys[i]}</td><td>${localStorage[keys[i]]}</tr></tr>`;
+		htmlString += `<tr><td>${keys[i]}</td><td><img src="/home/brent/Pictures/${localStorage[keys[i]]}"></tr></tr>`;
+		//${localStorage[keys[i]]}
 	}
 	$('tbody').html(htmlString)
 };
@@ -17,9 +18,15 @@ var updateStatusLabel = function(message) {
 PAGE CONTENT STUFF
 */
 
+var upload = function(fakepath) {
+	var splits = fakepath.split('fakepath\\');
+	return splits[1];
+}
+
+
 var createEntry = function(key, value) {
-	var newNote = '•  ' + value;
-    return localStorage.setItem(key, newNote);
+    return localStorage.setItem(key, upload(value));;
+
 }
 
 var updateEntry = function(key, value) {
@@ -32,21 +39,11 @@ var removeEntry = function(key) {
 	return localStorage.removeItem(key);
 }
 
-var convertImgToBase64URL= function(url, callback, outputFormat){
-    var img = new Image();
-    img.crossOrigin = 'Anonymous';
-    img.onload = function(){
-        var canvas = document.createElement('CANVAS'),
-        ctx = canvas.getContext('2d'), dataURL;
-        canvas.height = this.height;
-        canvas.width = this.width;
-        ctx.drawImage(this, 0, 0);
-        dataURL = canvas.toDataURL(outputFormat);
-        callback(dataURL);
-        canvas = null; 
-    };
-    img.src = url;
-}
+
+
+
+
+
 
 
 
@@ -64,9 +61,14 @@ $(document).ready(function () {
 
 
 
+
+
 	$('#btn-create').on('click', function(e) {
 		var key = $('#key').val();
-		var value = $('#value').val(); 
+		var value = $('#value').val();
+
+		//C:\fakepath\0.jpeg
+		///home/brent/Pictures/0.jpeg
 		var keyExists = localStorage.getItem(key) !== null;
 
 		if (keyExists) {
