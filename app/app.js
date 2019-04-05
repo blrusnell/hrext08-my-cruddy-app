@@ -3,7 +3,6 @@ var loadLocalStorage = function () {
 	var htmlString = '';
 	for (var i = 0; i < keys.length; i++) {
 		htmlString += `<tr><td>${keys[i]}</td><td><img src="/home/brent/Pictures/${localStorage[keys[i]]}"></tr></tr>`;
-		//${localStorage[keys[i]]}
 	}
 	$('tbody').html(htmlString)
 };
@@ -18,6 +17,8 @@ var updateStatusLabel = function(message) {
 PAGE CONTENT STUFF
 */
 
+
+//remove fakepath ---->>>//C:\fakepath\
 var upload = function(fakepath) {
 	var splits = fakepath.split('fakepath\\');
 	return splits[1];
@@ -30,8 +31,7 @@ var createEntry = function(key, value) {
 }
 
 var updateEntry = function(key, value) {
-	var newNote = '•  ' + value;
-	return localStorage.setItem(key, newNote);
+	return localStorage.setItem(key, upload(value));
 }
 
 
@@ -39,7 +39,20 @@ var removeEntry = function(key) {
 	return localStorage.removeItem(key);
 }
 
-
+// function getConfirmation()
+// {
+//     var retVal = confirm("Do you want to continue ?");
+//     if (retVal == true)
+//     {
+//         alert("User wants to continue!");
+//         return true;
+//     } 
+//     else
+//     {
+//         alert("User does not want to continue!");
+//         return false;
+//     }
+// }
 
 
 
@@ -67,17 +80,15 @@ $(document).ready(function () {
 		var key = $('#key').val();
 		var value = $('#value').val();
 
-		//C:\fakepath\0.jpeg
-		///home/brent/Pictures/0.jpeg
 		var keyExists = localStorage.getItem(key) !== null;
 
 		if (keyExists) {
-			updateStatusLabel('Use a different title for a note!');
+			updateStatusLabel('That person already exists - use update to change picture!');
 		} else if (key === '') {
-			updateStatusLabel('You need a title!')
+			updateStatusLabel('You need a name!')
 		}else {
 			createEntry(key, value);
-			updateStatusLabel('Note created - ' + key + '!');
+			updateStatusLabel('Person created - ' + key + '!');
 			$('#key').val('');
 		    $('#value').val('');
 		}
@@ -95,13 +106,13 @@ $(document).ready(function () {
 			updateStatusLabel('You changed absolutely nothing!')
 		} else if (keyExists) {
 			updateEntry(key, value);
-			updateStatusLabel('Note updated - ' + key + '!');
+			updateStatusLabel('Person updated - ' + key + '!');
 			$('#key').val('');
 		    $('#value').val('');
 		} else if (key === '') {
-			updateStatusLabel('You need to input a title to change it!')
+			updateStatusLabel('You need to input a name to change it!')
 		} else {
-			updateStatusLabel('Use create button for a new note!');
+			updateStatusLabel('Use create button for a new person!');
 		}		
 		
 		loadLocalStorage();		
@@ -114,21 +125,22 @@ $(document).ready(function () {
 
 		if (keyExists) {
 			removeEntry(key);
-			updateStatusLabel('Note removed - ' + key + '!');
+			updateStatusLabel('Person removed - ' + key + '!');
 			$('#key').val('');
 		    $('#value').val('');
 		} else if (key === '') {
 			updateStatusLabel('You didn\'t delete anything!')
 		} else {
-			updateStatusLabel('Title doesn\'t exist, nothing removed. :|');
+			updateStatusLabel('Person doesn\'t exist, nothing removed. :|');
 		}
 
 		loadLocalStorage();
 	});	
 
 	$('#btn-clear').on('click', function(e) {
-		confirm('Are you sure you want to delete everything?')
-		localStorage.clear();
+		if (confirm("Press Ok to Thanos your list!")) {
+          localStorage.clear();
+        }
 		updateStatusLabel('There is nothing here!')
 		loadLocalStorage();
 	});	
